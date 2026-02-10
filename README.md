@@ -9,11 +9,9 @@ El objetivo del trabajo fue aprender a instalar Python, utilizar librerías exte
 El proyecto final consiste en una calculadora, basada en un código proporcionado por el profesor, al cual se le realizaron varias mejoras funcionales y visuales.
 
 ⸻
-
 # Sistema Operativo
-	•	macOS
+![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white)
 
-⸻
 
 # Entorno de Desarrollo
 	•	Visual Studio Code
@@ -158,6 +156,7 @@ Este proyecto permitió aprender:
 
 Este trabajo representa mis primeras prácticas dentro de la materia Tópicos Avanzados en Programación.
 
+```bash
 import flet as ft
 
 def main(page: ft.Page):
@@ -243,5 +242,5 @@ def main(page: ft.Page):
     page.add(display, grid)
 
 ft.app(target=main)
-
+```
 
