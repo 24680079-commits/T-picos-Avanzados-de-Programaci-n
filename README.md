@@ -1,2 +1,247 @@
 # T-picos-Avanzados-de-Programaci-n
 Apuntes de clase y programas sobre la materia Tópicos Avanzados de Programación
+
+# Calculadora con Python y Flet
+
+Este repositorio contiene mis primeros apuntes y prácticas de la materia Tópicos Avanzados en Programación.
+El objetivo del trabajo fue aprender a instalar Python, utilizar librerías externas y desarrollar una aplicación gráfica utilizando Python y Flet.
+
+El proyecto final consiste en una calculadora, basada en un código proporcionado por el profesor, al cual se le realizaron varias mejoras funcionales y visuales.
+
+⸻
+
+# Sistema Operativo
+	•	macOS
+
+⸻
+
+# Entorno de Desarrollo
+	•	Visual Studio Code
+	•	Lenguaje: Python
+	•	Librería: Flet
+
+Para trabajar el proyecto utilicé Visual Studio Code, ya que permite ejecutar archivos Python de forma sencilla usando el botón Run, lo cual facilita el desarrollo de aplicaciones con interfaz gráfica.
+
+⸻
+
+# Instalación de Python en macOS
+
+Para poder desarrollar el proyecto fue necesario instalar Python.
+
+Pasos realizados:
+	1.	Ingresé al sitio oficial de Python:
+https://www.python.org
+
+	2.	Entré a la sección Downloads.
+  
+	3.	Descargué la versión recomendada para macOS.
+  
+	4.	Ejecuté el instalador y seguí los pasos indicados.
+  
+	5.	Finalicé la instalación.
+
+<img width="1792" height="1120" alt="Captura de pantalla 2026-02-09 a la(s) 18 05 27" src="https://github.com/user-attachments/assets/f1b01b59-0c13-4e99-a11f-151ff2f299a0" />
+
+Verificación de la instalación
+
+Para verificar que Python se instaló correctamente:
+	1.	Abrí la Terminal.
+  
+	2.	Ejecuté el comando:
+  
+  python3 --version
+  
+  <img width="824" height="507" alt="Captura de pantalla 2026-02-09 a la(s) 18 06 05" src="https://github.com/user-attachments/assets/7dde36dc-8357-40a0-a3fd-c14c6e0c99b0" />
+
+  
+  # Instalación de Flet
+
+Flet es la librería utilizada para crear la interfaz gráfica de la calculadora.
+
+Pasos:
+	1.	Abrí la Terminal.
+  
+	2.	Ejecuté el siguiente comando:
+
+  ![PHOTO-2026-01-30-10-15-22](https://github.com/user-attachments/assets/5a672325-a73d-4cfe-af75-24f786b58097)
+
+  
+  3.	Esperé a que la instalación finalizara correctamente.
+
+![a5508e60-117a-4ff1-986d-90c083f5ef96](https://github.com/user-attachments/assets/8d0ea77c-077d-4446-97f2-30284565bbfe)
+
+  ▶️ Ejecución del Proyecto en Visual Studio Code
+
+El programa se ejecuta directamente desde Visual Studio Code.
+
+Pasos:
+	1.	Abrí Visual Studio Code.
+	2.	Abrí la carpeta del proyecto.
+	3.	Abrí el archivo .py.
+	4.	Presioné el botón Run.
+
+Al ejecutar el archivo, Flet genera automáticamente el entorno gráfico, mostrando la ventana de la calculadora.
+
+<img width="1792" height="1120" alt="Captura de pantalla 2026-02-09 a la(s) 18 09 02" src="https://github.com/user-attachments/assets/6ff1b265-f3e0-4724-a30a-90221c3108cf" />
+
+# Proyecto: Calculadora con Flet
+
+Como práctica,  código base para crear una calculadora usando Flet.
+Este código incluía:
+	•	Configuración básica de la ventana.
+	•	Un display para mostrar números.
+	•	Botones organizados en un GridView.
+  
+<img width="1792" height="1120" alt="Captura de pantalla 2026-02-09 a la(s) 18 13 13" src="https://github.com/user-attachments/assets/1da637e8-e058-4827-9e12-40d759b7a1a3" />
+
+# Modificaciones y Mejoras Realizadas
+
+A partir del código proporcionado por el profesor, realicé las siguientes modificaciones y mejoras:
+
+⸻
+
+# Agregado de botones numéricos con eventos
+
+Se agregaron más botones numéricos a la calculadora.
+Cada botón utiliza el evento on_click para detectar cuándo es presionado.
+
+Para identificar qué botón se presionó, se utilizó la propiedad data, la cual envía el valor del botón a la función de evento.
+
+<img width="1792" height="1120" alt="Captura de pantalla 2026-02-09 a la(s) 18 15 14" src="https://github.com/user-attachments/assets/b7e1a746-0b92-403e-a978-c7d68d121836" />
+
+ Escritura dinámica en el display
+
+Se implementó una función que actualiza el display de la calculadora:
+
+	•	Si el display contiene "0", el valor se reemplaza.
+	•	Si ya contiene números, el nuevo número se concatena.
+
+Esto permite simular el funcionamiento real de una calculadora.
+
+⸻
+
+ Botón AC (All Clear)
+
+Se agregó un botón AC, el cual borra completamente el contenido del display y lo regresa al valor "0".
+
+Este botón mejora la funcionalidad de la calculadora y permite reiniciar la operación.
+
+ Botón DEL (Borrar un solo dígito)
+
+Además del botón AC, se implementó un botón DEL, el cual permite borrar los números uno por uno.
+
+Funcionamiento:
+	•	Si el display tiene más de un carácter, se elimina el último.
+	•	Si solo queda un número, el display vuelve a "0".
+
+Esta mejora hace que la calculadora sea más intuitiva y funcional.
+
+Ajustes de tamaño y diseño
+
+Se realizaron ajustes para evitar que la calculadora creciera demasiado:
+	•	Se eliminó el uso de expand=True.
+	•	Se definió un tamaño fijo para la ventana y el grid.
+	•	Se evitó el uso de scroll, manteniendo todos los botones visibles.
+
+Esto mejora la experiencia del usuario.
+
+<img width="306" height="431" alt="Captura de pantalla 2026-02-09 a la(s) 18 19 27" src="https://github.com/user-attachments/assets/e931fcbc-6b07-415f-9d05-1f7ff40d00f9" />
+
+Conclusión
+
+Este proyecto permitió aprender:
+	•	Cómo instalar Python y librerías en macOS.
+	•	Cómo ejecutar proyectos en Visual Studio Code.
+	•	Cómo crear interfaces gráficas con Flet.
+	•	Cómo manejar eventos con on_click.
+	•	Cómo mejorar un código base agregando nuevas funcionalidades.
+
+Este trabajo representa mis primeras prácticas dentro de la materia Tópicos Avanzados en Programación.
+
+import flet as ft
+
+def main(page: ft.Page):
+    page.title = "Calculadora TAP - Eventos"
+    page.window_width = 250
+    page.window_height = 380
+    page.window_resizable = False
+    page.padding = 15
+
+    # TEXTO DEL DISPLAY
+    texto_display = ft.Text(value="0", size=28)
+
+    # EVENTO PARA BOTONES NUMÉRICOS
+    def boton_click(e):
+        if texto_display.value == "0":
+            texto_display.value = e.control.data
+        else:
+            texto_display.value += e.control.data
+        page.update()
+
+    # EVENTO PARA BORRAR UN SOLO NÚMERO (DEL)
+    def borrar_uno(e):
+        if len(texto_display.value) > 1:
+            texto_display.value = texto_display.value[:-1]
+        else:
+            texto_display.value = "0"
+        page.update()
+
+    # DISPLAY
+    display = ft.Container(
+        content=texto_display,
+        bgcolor=ft.Colors.BLACK12,
+        border_radius=8,
+        alignment=ft.alignment.Alignment(1, 0),
+        padding=10,
+        height=60,
+    )
+
+    # GRID DE BOTONES (TAMAÑO CONTROLADO)
+    grid = ft.GridView(
+        runs_count=3,
+        spacing=8,
+        run_spacing=8,
+        width=210,
+        height=220,
+    )
+
+    # FUNCIÓN PARA CREAR BOTONES
+    def crear_boton(texto, color, evento, data=None):
+        return ft.Container(
+            content=ft.Text(texto, color="white"),
+            alignment=ft.alignment.Alignment(0, 0),
+            height=50,
+            bgcolor=color,
+            border_radius=8,
+            on_click=evento,
+            data=data,
+        )
+
+    # BOTONES NUMÉRICOS
+    for num in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]:
+        grid.controls.append(
+            crear_boton(num, ft.Colors.PRIMARY, boton_click, num)
+        )
+
+    # BOTÓN DEL (BORRA UNO)
+    grid.controls.append(
+        crear_boton("DEL", ft.Colors.SECONDARY, borrar_uno)
+    )
+
+    # BOTÓN AC (BORRA TODO)
+    grid.controls.append(
+        crear_boton(
+            "AC",
+            ft.Colors.ERROR,
+            lambda e: (
+                setattr(texto_display, "value", "0"),
+                page.update()
+            ),
+        )
+    )
+
+    page.add(display, grid)
+
+ft.app(target=main)
+
+
