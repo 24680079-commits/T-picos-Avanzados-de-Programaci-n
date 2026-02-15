@@ -244,3 +244,347 @@ def main(page: ft.Page):
 ft.app(target=main)
 ```
 
+
+# Practica 2 
+En esta practica creamos el evento que permita enviar el dato del número al display, 
+
+# Implementación del Evento para Enviar el Número al Display
+
+En esta práctica, el profesor nos proporcionó un código base que únicamente contenía la estructura visual de la calculadora, es decir:
+
+Ventana configurada
+
+Sección del display
+
+Sección de botones numéricos
+
+Sección de operaciones
+
+Organización con Column, Row y Container
+
+Sin embargo, el código original era estático, ya que los botones no realizaban ninguna acción al presionarse.
+
+ Diferencia entre el código del profesor y mi versión
+ Código del profesor:
+
+Solo estructura visual.
+
+Los botones eran Container sin evento.
+
+El display mostraba un texto fijo "DISPLAY".
+
+No existía interacción.
+
+Mi versión:
+
+Convertí el display en un objeto dinámico.
+
+Agregué un evento on_click a cada botón.
+
+Utilicé la propiedad data para identificar qué número fue presionado.
+
+Implementé una función que actualiza el display en tiempo real.
+
+# Lógica Implementada
+1. Creación de un display dinámico
+
+En lugar de usar un texto fijo, creé una variable llamada:
+
+```bash
+texto_display = ft.Text("0", size=20)
+```
+
+Esto permite modificar el valor del display durante la ejecución del programa.
+
+2. Creación del evento boton_click
+
+Definí una función que se ejecuta cada vez que se presiona un botón numérico:
+
+```bash
+def boton_click(e):
+    if texto_display.value == "0":
+        texto_display.value = e.control.data
+    else:
+        texto_display.value += e.control.data
+    page.update()
+```
+
+ Explicación de la lógica del evento
+✔ Parámetro e
+
+El parámetro e representa el evento generado al hacer clic en el botón.
+
+✔ e.control.data
+
+Cada botón tiene una propiedad data que contiene el número correspondiente.
+
+Ejemplo:
+
+```bash
+data="1",
+on_click=boton_click
+```
+
+Cuando se presiona el botón "1", el evento envía el valor "1" a la función.
+
+✔ Condición principal
+
+```bash
+if texto_display.value == "0":
+```
+
+Si el display contiene solo "0", significa que aún no se ha ingresado ningún número.
+
+En ese caso:
+
+Se reemplaza el "0" por el número presionado.
+
+✔ Concatenación de números
+
+```bash
+else:
+    texto_display.value += e.control.data
+```
+
+Si ya hay un número en pantalla:
+
+El nuevo número se concatena al final.
+
+Esto permite formar números de varias cifras.
+
+Ejemplo:
+
+Si el display tiene "2" y presiono "5",
+
+El resultado será "25".
+
+✔ Actualización de la interfaz
+
+```bash
+page.update()
+```
+
+Esta instrucción es fundamental, ya que:
+
+Refresca la interfaz gráfica.
+
+Permite que el cambio en el display sea visible inmediatamente.
+
+Sin esta línea, el valor cambiaría internamente, pero no se mostraría en pantalla.
+
+# Modificación en los Botones
+
+En el código original, los botones solo tenían diseño visual.
+
+Yo agregué dos propiedades importantes:
+
+```bash
+data="1",
+on_click=boton_click
+```
+
+data → almacena el valor del botón.
+
+on_click → conecta el botón con la función que maneja el evento.
+
+Esto transforma los botones de elementos estáticos a elementos interactivos.
+
+# Resultado Final
+
+Con estas modificaciones logré:
+
+Que cada botón numérico envíe su valor al display.
+
+Que el display construya números dinámicamente.
+
+Que la interfaz responda a eventos.
+
+Convertir una maqueta estática en una aplicación funcional.
+
+# Conclusión
+
+En esta práctica comprendí cómo funcionan los eventos en Flet y cómo se pueden utilizar para crear interacción en una aplicación gráfica.
+
+Aprendí que:
+
+Los eventos permiten comunicación entre la interfaz y la lógica del programa.
+
+La propiedad data es útil para identificar qué botón fue presionado.
+
+page.update() es necesario para reflejar cambios en la interfaz.
+
+Esta modificación marcó el paso de una aplicación estática a una aplicación interactiva.
+
+# codigo final 
+```bash
+import flet as ft
+
+def main(page: ft.Page):
+    page.title = "Calculadora Estática - TAP"
+    page.window_width = 280
+    page.window_height = 450
+    page.window_resizable = False
+    page.padding = 15
+
+    # --- 1. SECCIÓN DISPLAY (ROJO) ---
+    texto_display = ft.Text("0", size=20)
+
+    def boton_click(e):
+        if texto_display.value == "0":
+            texto_display.value = e.control.data
+        else:
+            texto_display.value += e.control.data
+        page.update()
+
+    seccion_display = ft.Container(
+        content=texto_display,
+        bgcolor=ft.Colors.BLACK12,
+        height=70,
+        alignment=ft.alignment.Alignment(0, 0),
+        border=ft.border.all(1, ft.Colors.RED)
+    )
+
+    # --- 2. SECCIÓN BOTONES NUMÉRICOS (AZUL) ---
+    seccion_numeros = ft.Column(
+        controls=[
+
+            # Fila 1
+            ft.Row(
+                controls=[
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("1", color="white"),
+                        data="1",
+                        on_click=boton_click
+                    ),
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("2", color="white"),
+                        data="2",
+                        on_click=boton_click
+                    ),
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("3", color="white"),
+                        data="3",
+                        on_click=boton_click
+                    ),
+                ]
+            ),
+
+            # Fila 2
+            ft.Row(
+                controls=[
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("4", color="white"),
+                        data="4",
+                        on_click=boton_click
+                    ),
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("5", color="white"),
+                        data="5",
+                        on_click=boton_click
+                    ),
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("6", color="white"),
+                        data="6",
+                        on_click=boton_click
+                    ),
+                ]
+            ),
+
+            # Fila 3
+            ft.Row(
+                controls=[
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("7", color="white"),
+                        data="7",
+                        on_click=boton_click
+                    ),
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("8", color="white"),
+                        data="8",
+                        on_click=boton_click
+                    ),
+                    ft.Container(
+                        expand=1,
+                        height=50,
+                        bgcolor="blue",
+                        border=ft.border.all(1, "white"),
+                        alignment=ft.alignment.Alignment(0, 0),
+                        content=ft.Text("9", color="white"),
+                        data="9",
+                        on_click=boton_click
+                    ),
+                ]
+            ),
+        ],
+        spacing=10
+    )
+
+    # --- 3. SECCIÓN OPERACIONES (VERDE) ---
+    seccion_operaciones = ft.Row(
+        controls=[
+            ft.Container(expand=1, height=60, bgcolor="green", border=ft.border.all(1, "white")),
+            ft.Container(expand=1, height=60, bgcolor="green", border=ft.border.all(1, "white")),
+            ft.Container(expand=1, height=60, bgcolor="green", border=ft.border.all(1, "white")),
+        ]
+    )
+
+    # --- CONSTRUCCIÓN FINAL ---
+    page.add(
+        ft.Column(
+            controls=[
+                seccion_display,
+                ft.Text("Números:", size=12),
+                seccion_numeros,
+                ft.Divider(),
+                ft.Text("Operaciones:", size=12),
+                seccion_operaciones
+            ],
+            spacing=15
+        )
+    )
+
+if __name__ == "__main__":
+    ft.app(target=main)
+```
+<img width="797" height="644" alt="Captura de pantalla 2026-02-14 a la(s) 21 59 25" src="https://github.com/user-attachments/assets/8ce50622-1fd4-4a22-bbc7-32025764d8fb" />
+
