@@ -1,7 +1,171 @@
 # T-picos-Avanzados-de-Programaci-n
 Apuntes de clase y programas sobre la materia Tópicos Avanzados de Programación
+# UNIDAD 1 – Interfaz Gráfica de Usuario (GUI)
+# Interfaz Gráfica de Usuario (GUI)
 
-# Calculadora con Python y Flet
+Una Interfaz Gráfica de Usuario (GUI) es un sistema de interacción entre el usuario y una aplicación que utiliza elementos visuales como ventanas, botones, menús, cuadros de texto e íconos para facilitar la comunicación con el sistema.
+
+A diferencia de una interfaz de línea de comandos (CLI), la GUI permite interacción mediante:
+
+Mouse
+
+Teclado
+
+Pantalla táctil
+
+Eventos visuales
+
+Las GUI están basadas en el modelo dirigido por eventos (event-driven programming).
+
+En Python, existen varias bibliotecas para crear GUI, como:
+
+Tkinter
+
+PyQt
+
+Kivy
+
+Flet
+
+Flet permite crear interfaces modernas usando un modelo reactivo similar a Flutter, pero completamente en Python.
+
+# 1.1 Creación de interfaz gráfica para usuarios
+
+La creación de una GUI implica:
+
+Definir una ventana principal.
+
+Agregar componentes gráficos.
+
+Organizar los elementos en la pantalla.
+
+Asociar eventos a los componentes.
+
+En Flet, la estructura básica es:
+
+```bash
+import flet as ft
+
+def main(page: ft.Page):
+    page.title = "Mi aplicación"
+    page.add(ft.Text("Hola mundo"))
+
+ft.app(target=main)
+``` 
+Elementos básicos en Flet:
+
+Page → ventana principal
+
+Text → texto
+
+ElevatedButton → botón
+
+TextField → campo de texto
+
+Row y Column → organización de componentes
+
+# 1.2 Tipos de eventos
+
+Un evento es una acción que ocurre dentro del sistema como resultado de la interacción del usuario o del propio programa.
+
+Tipos principales de eventos:
+
+Eventos de clic
+
+Presionar un botón
+
+Eventos de teclado
+
+Escribir texto
+
+Eventos de cambio
+
+Modificación en un campo de texto
+
+Eventos del sistema
+
+Cerrar ventana
+
+Redimensionar
+
+En Flet, los eventos más comunes son:
+```bash
+on_click
+
+on_change
+
+on_submit
+
+Ejemplo:
+
+def saludar(e):
+    print("Botón presionado")
+
+boton = ft.ElevatedButton("Saludar", on_click=saludar)
+```
+# 1.3 Manejo de eventos
+
+El manejo de eventos consiste en definir qué acción debe ejecutarse cuando ocurre un evento.
+
+Este modelo se conoce como:
+
+Programación dirigida por eventos (Event-Driven Programming)
+
+En este paradigma:
+
+El sistema permanece en espera.
+
+Cuando ocurre un evento, se ejecuta una función asociada.
+
+Ejemplo en Flet:
+```bash
+def mostrar_texto(e):
+    texto.value = "Hola Usuario"
+    page.update()
+
+texto = ft.Text("")
+boton = ft.ElevatedButton("Mostrar", on_click=mostrar_texto)
+```
+Aquí:
+
+mostrar_texto es el manejador del evento.
+```bash
+on_click es el evento.
+
+page.update() refresca la interfaz.
+```
+# 1.4 Manejo de componentes gráficos de control
+
+Los componentes gráficos de control permiten al usuario interactuar con la aplicación.
+
+En Flet los principales son:
+
+Componente	Función
+ElevatedButton	Botón
+TextField	Entrada de texto
+Checkbox	Selección múltiple
+Dropdown	Lista desplegable
+Slider	Selección numérica
+Switch	Activar/desactivar
+
+Ejemplo práctico:
+```bash
+def obtener_nombre(e):
+    resultado.value = f"Hola {campo.value}"
+    page.update()
+
+campo = ft.TextField(label="Ingresa tu nombre")
+boton = ft.ElevatedButton("Enviar", on_click=obtener_nombre)
+resultado = ft.Text("")
+```
+# Bibliografía 
+
+Deitel, P., & Deitel, H. (2017). Cómo programar en Java (10.ª ed.). Pearson Educación.
+
+Goodrich, M. T., Tamassia, R., & Goldwasser, M. H. (2014). Estructuras de datos y algoritmos en Java (6.ª ed.). Wiley.
+
+# Practica 1
+Calculadora con Python y Flet
 
 Este repositorio contiene mis primeros apuntes y prácticas de la materia Tópicos Avanzados en Programación.
 El objetivo del trabajo fue aprender a instalar Python, utilizar librerías externas y desarrollar una aplicación gráfica utilizando Python y Flet.
